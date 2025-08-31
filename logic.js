@@ -1,3 +1,10 @@
+//global variables
+
+let humanScore = 0;
+let computerScore = 0;
+let computerChoice = getComputerChoice();
+let humanChoice = getHumanChoice();
+
 //computer choice logic
 
 function getComputerChoice() {
@@ -12,51 +19,78 @@ function getComputerChoice() {
     }
 }
 
-const computerChoice = getComputerChoice();
 
 console.log("Computer picks: " + computerChoice);
 
-//Human player logic
+//Human logic
 
-playerChoice = window.prompt("Rock, Paper or Scissors?");
-playerChoice = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1).toLowerCase();
+function getHumanChoice() {
+choice = window.prompt("Rock, Paper or Scissors?");
+choice = choice.charAt(0).toUpperCase() + choice.slice(1).toLowerCase();
 
-console.log("Player picks: " + playerChoice);
+console.log("human picks: " + choice);
+return choice;
+
+}
 
 //Comparison
 
-function winner(){
+function playround(){
 
     //Tie scenario
 
-    if (computerChoice === playerChoice)  {
+    if (computerChoice === humanChoice)  {
         return "Tie";
     }
 
     //Computer Wins scenario
 
-    if (computerChoice === "Rock" && playerChoice === "Scissors")  {
+    if (computerChoice === "Rock" && humanChoice === "Scissors")  {
+        ++computerScore;
         return "Rock beats Scissors, computer wins!";
-    } else if (computerChoice === "Paper" && playerChoice === "Rock") {
+    } else if (computerChoice === "Paper" && humanChoice === "Rock") {
+        ++computerScore;
         return "Paper beats Rock, computer wins!";
-    } else if (computerChoice === "Scissors" && playerChoice === "Paper") {
+    } else if (computerChoice === "Scissors" && humanChoice === "Paper") {
+        ++computerScore;
         return "Scissors beats Paper, computer wins!";
     }
 
-    //Player Wins scenario
+    //human Wins scenario
 
-    if (computerChoice === "Scissors" && playerChoice === "Rock")  {
+    if (computerChoice === "Scissors" && humanChoice === "Rock")  {
+        ++humanScore;
         return "Rock beats Scissors, you win!";
-    } else if (computerChoice === "Rock" && playerChoice === "Paper") {
+    } else if (computerChoice === "Rock" && humanChoice === "Paper") {
+        ++humanScore;
         return "Paper beats Rock, you win!";
-    } else if (computerChoice === "Paper" && playerChoice === "Scissors") {
+    } else if (computerChoice === "Paper" && humanChoice === "Scissors") {
+        ++humanScore;
         return "Scissors beats Paper, you win!";
     }
 
+} 
+
+function proceed() {
+    if  (humanChoice != "Rock" && humanChoice != "Paper" && humanChoice != "Scissors") {
+            window.alert("Invalid");
+        } else {
+            console.log(playround());
+            console.log("your score is: " + humanScore);
+            console.log("Computer score is: " + computerScore);
+
+    }
 }
 
-if  (playerChoice != "Rock" && playerChoice != "Paper" && playerChoice != "Scissors") {
-    window.alert("Invalid");
-} else {
-    console.log(winner());
+
+while (computerScore < 5 && humanScore < 5) {
+    computerChoice = getComputerChoice();
+    humanChoice = getHumanChoice();
+    proceed();
+}
+
+if (computerScore == 5) {
+    window.alert("It must be the rise of the machines, computer wins!")
+} else if (humanScore == 5) {
+    window.alert("You showed those silly circuits who's boss! You win!")
 }
