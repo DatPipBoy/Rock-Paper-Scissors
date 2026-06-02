@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-#choices {
+#choices, #gameState {
     display: flex;
     padding: 0;
     flex-direction: column;
@@ -10,5 +10,29 @@
 }
 
 ul {
-    padding: 0;
+    padding: 20px;
+}
+
+#selections {
+    text-align: center;
+    width: 600px;
+    height: 30px;
+}
+
+#scores {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 100px;
+    margin: 20px;
+}
+
+#humanScoreContainer, #computerScoreContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+    height: 400px;
+    width: 400px;
+    align-items: center;
+    justify-content: space-evenly;
 }
