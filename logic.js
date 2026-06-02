@@ -1,3 +1,5 @@
+//styling
+
 const stylesheet = document.createElement("link");
 stylesheet.rel = "stylesheet";
 stylesheet.type = "text/css";
@@ -5,7 +7,7 @@ stylesheet.href = "styles.css";
 
 document.head.appendChild(stylesheet);
 
-
+//global variables
 
 let humanScoreValue = 0;
 let humanScore = document.getElementById("humanScore");
@@ -25,6 +27,7 @@ gameState.appendChild(selections);
 
 const buttons = document.querySelectorAll("button");
 
+
 function additionalRound() {
     if (window.confirm("Play again?")) {
         humanScoreValue = 0;
@@ -36,6 +39,8 @@ function additionalRound() {
         window.alert("Thanks for playing!");
     }
 }
+
+//game logic
 
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
